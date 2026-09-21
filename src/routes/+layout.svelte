@@ -10,6 +10,7 @@
 		{ href: '/', label: '首页' },
 		{ href: '/projects', label: '项目' },
 		{ href: '/blog', label: '博客' },
+		{ href: '/ai', label: 'AI' },
 		{ href: '/about', label: '关于' }
 	];
 
