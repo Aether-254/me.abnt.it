@@ -7,7 +7,7 @@
 <section class="mx-auto max-w-3xl px-6 py-16">
 	<h1 class="text-3xl font-semibold tracking-tight md:text-4xl">关于</h1>
 	<div class="prose prose-invert mt-8 max-w-none prose-a:text-accent">
-		<p>我是 {site.name}，在{site.location.split(',')[0]}。主要写 Java / Kotlin / C# / TypeScript，兴趣集中在三块：</p>
+		<p>我是 {site.name}，在上海。主要写 Java / Kotlin / C# / TypeScript，兴趣集中在三块：</p>
 		<ul>
 			<li><strong>Minecraft mod 开发</strong>：Fabric 与 NeoForge，Create 机械动力附属，跨版本移植（Mixin、字节码校验、Gradle 工具链），以及一部分 GLSL 着色器。</li>
 			<li><strong>游戏开发</strong>：Unity / C#，正在做的 <a href="https://github.com/Aether-254/Equilibrium_pub">Equilibrium</a> 是一款基于真实物理化学的 2D 工厂建造游戏。</li>
