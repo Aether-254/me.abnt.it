@@ -5,7 +5,7 @@ export const site = {
 	title: 'Aether_254',
 	description: 'Minecraft mod 开发、Unity 游戏、LLM 基础设施与逆向分析。',
 	location: 'Shanghai, China',
-	email: '_aether_254@abnt.it',
+	email: '484029294@qq.com',
 	github: 'https://github.com/Aether-254',
 	bilibili: 'https://space.bilibili.com/650545272'
 };
