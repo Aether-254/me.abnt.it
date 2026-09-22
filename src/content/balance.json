@@ -1,0 +1,17 @@
+{
+  "updated": "2026-09-21",
+  "accounts": [
+    { "id": "wechat", "name": "微信", "balance": 0 },
+    { "id": "alipay", "name": "支付宝", "balance": 0 }
+  ],
+  "transactions": [
+    {
+      "date": "2026-09-21",
+      "title": "示例：服务器续费",
+      "amount": -68,
+      "channel": "alipay",
+      "status": "PAID",
+      "note": "删掉这条，在 /admin 里录入真实记录"
+    }
+  ]
+}

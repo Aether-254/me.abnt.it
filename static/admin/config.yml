@@ -35,6 +35,30 @@ collections:
   - name: site
     label: 站点配置
     files:
+      - name: balance
+        label: Balance 余额与消费
+        file: src/content/balance.json
+        fields:
+          - { name: updated, label: 更新日期, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+          - name: accounts
+            label: 账户余额
+            widget: list
+            allow_add: false
+            fields:
+              - { name: id, label: ID, widget: hidden }
+              - { name: name, label: 名称, widget: string }
+              - { name: balance, label: 余额（元）, widget: number, value_type: float, step: 0.01 }
+          - name: transactions
+            label: 消费记录（页面只显示最近 10 条）
+            widget: list
+            summary: "{{fields.date}} {{fields.title}} {{fields.amount}} {{fields.status}}"
+            fields:
+              - { name: date, label: 日期, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { name: title, label: 项目, widget: string }
+              - { name: amount, label: 金额（支出为负）, widget: number, value_type: float, step: 0.01 }
+              - { name: channel, label: 渠道, widget: select, options: [{ label: 微信, value: wechat }, { label: 支付宝, value: alipay }], default: alipay }
+              - { name: status, label: 状态, widget: select, options: [PAID, REFUNDED, CANCELLED], default: PAID }
+              - { name: note, label: 备注, widget: string, required: false }
       - name: config
         label: site.ts
         file: src/lib/site.ts
