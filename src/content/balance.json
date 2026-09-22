@@ -17,6 +17,13 @@
       "channel": "alipay",
       "status": "PAID",
       "date": "2026-09-19",
+      "title": "二维码收款",
+      "amount": 70
+    },
+    {
+      "channel": "alipay",
+      "status": "PAID",
+      "date": "2026-09-19",
       "title": "750三角币",
       "amount": -68
     },
