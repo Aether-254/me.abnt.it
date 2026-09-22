@@ -1,17 +1,38 @@
 {
   "updated": "2026-09-21",
   "accounts": [
-    { "id": "wechat", "name": "微信", "balance": 0 },
-    { "id": "alipay", "name": "支付宝", "balance": 0 }
+    {
+      "id": "wechat",
+      "name": "微信",
+      "balance": 65.41
+    },
+    {
+      "id": "alipay",
+      "name": "支付宝",
+      "balance": 2
+    }
   ],
   "transactions": [
     {
-      "date": "2026-09-21",
-      "title": "示例：服务器续费",
-      "amount": -68,
+      "channel": "wechat",
+      "status": "PAID",
+      "amount": -16,
+      "date": "2026-09-19",
+      "title": "正新鸡排"
+    },
+    {
       "channel": "alipay",
       "status": "PAID",
-      "note": "删掉这条，在 /admin 里录入真实记录"
+      "date": "2026-09-19",
+      "title": "蜜雪冰城",
+      "amount": -17.6
+    },
+    {
+      "channel": "alipay",
+      "status": "PAID",
+      "date": "2026-09-19",
+      "title": "750三角币",
+      "amount": -68
     }
   ]
 }
