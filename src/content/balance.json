@@ -14,25 +14,25 @@
   ],
   "transactions": [
     {
-      "channel": "wechat",
+      "channel": "alipay",
       "status": "PAID",
-      "amount": -16,
       "date": "2026-09-19",
-      "title": "正新鸡排"
+      "title": "750三角币",
+      "amount": -68
     },
     {
-      "channel": "alipay",
+      "channel": "wechat",
       "status": "PAID",
       "date": "2026-09-19",
       "title": "蜜雪冰城",
       "amount": -17.6
     },
     {
-      "channel": "alipay",
+      "channel": "wechat",
       "status": "PAID",
+      "amount": -16,
       "date": "2026-09-19",
-      "title": "750三角币",
-      "amount": -68
+      "title": "正新鸡排"
     }
   ]
 }
