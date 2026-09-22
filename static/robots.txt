@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin
-Disallow: /balance
 Sitemap: https://me.abnt.it/sitemap.xml

@@ -15,8 +15,6 @@
 	};
 </script>
 
-<svelte:head><meta name="robots" content="noindex" /></svelte:head>
-
 <section class="mx-auto max-w-3xl px-6 py-16">
 	<h1 class="text-3xl font-semibold tracking-tight md:text-4xl">Balance</h1>
 	<p class="mt-3 text-muted">手动录入，更新于 {data.updated}。</p>

@@ -11,6 +11,7 @@
 		{ href: '/projects', label: '项目' },
 		{ href: '/blog', label: '博客' },
 		{ href: '/ai', label: 'AI' },
+		{ href: '/balance', label: 'Balance' },
 		{ href: '/about', label: '关于' }
 	];
 
