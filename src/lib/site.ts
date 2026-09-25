@@ -35,6 +35,12 @@ export const now = [
 
 export const featured = [
 	{
+		name: 'ask-jev',
+		repo: 'Aether-254/ask-jev',
+		tag: 'TypeScript · MCP / AI',
+		desc: 'TypeSafe Jev 的 Codex / Claude 插件，支持 choice、score、noul 与批量结构化判断。'
+	},
+	{
 		name: 'Equilibrium',
 		repo: 'Aether-254/Equilibrium_pub',
 		tag: 'Unity · C#',
