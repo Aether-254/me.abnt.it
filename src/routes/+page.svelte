@@ -7,6 +7,7 @@
 </script>
 
 <section class="mx-auto max-w-5xl px-6 pt-24 pb-16">
+{@html '<!-- TXT 4.abnt.it -->'}
 	<p class="font-mono text-sm text-accent">hello, world</p>
 	<h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-6xl">
 		{site.name}
