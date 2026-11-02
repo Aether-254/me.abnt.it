@@ -29,7 +29,7 @@ export const skills: { group: string; items: string[] }[] = [
 
 export const now = [
 	{ title: 'Minecraft mod', detail: 'Java / Kotlin / Gradle / GLSL。在做 Create 生态的附属 mod，以及 Fabric 1.21.11 的版本移植。' },
-	{ title: 'LLM / ML', detail: '模型部署与推理网关，同时运维公益 API 站 api.abnt.it（Docker / k8s）。' },
+	{ title: 'LLM / ML', detail: '模型部署与推理网关（Docker / k8s）。运维公益的 Aether API（api.abnt.it）及其付费版本 Aether Pro（pro.abnt.it，面向 GPT 与 Claude 系列模型的商业中转站）。' },
 	{ title: 'Unity 游戏', detail: 'Equilibrium：一款以真实物理与化学为基础的 2D 硬核工厂建造游戏（C#）。' },
 	{ title: '逆向与安全', detail: 'Java Agent 反作弊分析、VMProtect 样本分析、Windows 取证。' }
 ];
