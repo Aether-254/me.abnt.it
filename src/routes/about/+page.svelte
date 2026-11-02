@@ -11,7 +11,7 @@
 		<ul>
 			<li><strong>Minecraft mod 开发</strong>：基于 Fabric 与 NeoForge，做 Create（机械动力）附属和跨版本移植（涉及 Mixin、字节码校验与 Gradle 工具链），也写一些 GLSL 着色器。</li>
 			<li><strong>游戏开发</strong>：用 Unity 和 C#。目前在做 <a href="https://github.com/Aether-254/Equilibrium_pub">Equilibrium</a>，一款以真实物理与化学为基础的 2D 工厂建造游戏。</li>
-			<li><strong>LLM 与基础设施</strong>：维护公益 LLM API 站 <a href="https://api.abnt.it">api.abnt.it</a>（Docker / k8s），同时在学习模型的训练与推理。</li>
+			<li><strong>LLM 与基础设施</strong>：维护公益 LLM API 站 <a href="https://api.abnt.it">api.abnt.it</a>（Docker / k8s），以及付费的商业中转站 <a href="https://pro.abnt.it">Aether Pro</a>（提供 GPT 与 Claude 系列模型的 API 访问），同时在学习模型的训练与推理。</li>
 		</ul>
 		<p>另外也做些逆向与安全分析：Java Agent 反作弊（<a href="https://aetherac.abnt.it">AetherAC</a>）、VMProtect 样本、Windows 取证。我还运营着一个 Minecraft 无规则服务器 <a href="https://abnt.it">abnt.it</a>。</p>
 

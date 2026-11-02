@@ -11,7 +11,7 @@ export const site = {
 };
 
 export const links: { label: string; href: string; note: string; featured?: boolean }[] = [
-	{ label: 'Aether Pro', href: 'https://pro.abnt.it', note: 'pro.abnt.it', featured: true },
+	{ label: 'Aether Pro', href: 'https://pro.abnt.it', note: '商业中转站 · pro.abnt.it', featured: true },
 	{ label: 'GitHub', href: site.github, note: '@Aether-254' },
 	{ label: 'Bilibili', href: site.bilibili, note: 'Aether_255' },
 	{ label: '邮箱', href: `mailto:${site.email}`, note: site.email },

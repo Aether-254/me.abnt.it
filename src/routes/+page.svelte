@@ -23,7 +23,7 @@
 	<div class="mt-8 flex flex-wrap gap-3">
 		{#each links as l}
 			{#if l.featured}
-				<a href={l.href} target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-lg border border-accent/60 bg-accent/10 px-4 py-2 text-sm transition-colors hover:border-accent hover:bg-accent/15">
+				<a href={l.href} target="_blank" rel="noopener" class="group inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-accent/60 bg-accent/10 px-4 py-2 text-sm transition-colors hover:border-accent hover:bg-accent/15">
 					<span class="brand-icon text-base text-accent">{@html sparkle}</span>
 					<span class="font-medium text-fg">{l.label}</span>
 					<span class="rounded-full bg-accent px-2 py-0.5 text-[11px] font-semibold leading-none text-bg">Featured</span>
