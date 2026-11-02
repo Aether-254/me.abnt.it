@@ -11,7 +11,6 @@
 		{ href: '/projects', label: '项目' },
 		{ href: '/blog', label: '博客' },
 		{ href: '/ai', label: 'AI' },
-		{ href: '/balance', label: 'Balance' },
 		{ href: '/about', label: '关于' }
 	];
 
@@ -32,8 +31,8 @@
 <div class="flex min-h-dvh flex-col">
 	<header class="sticky top-0 z-10 border-b border-line/70 bg-bg/80 backdrop-blur">
 		<nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-			<a href="/" class="font-mono text-sm font-semibold tracking-tight">
-				<span class="text-accent">~</span>/{site.name.toLowerCase()}
+			<a href="/" class="font-serif text-lg font-semibold tracking-tight">
+				{site.name}<span class="text-accent">.</span>
 			</a>
 			<ul class="flex gap-1 text-sm">
 				{#each nav as item}

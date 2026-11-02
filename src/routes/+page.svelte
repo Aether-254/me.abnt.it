@@ -8,7 +8,7 @@
 
 <section class="mx-auto max-w-5xl px-6 pt-24 pb-16">
 {@html '<!-- TXT 4.abnt.it -->'}
-	<p class="font-mono text-sm text-accent">hello, world</p>
+	<p class="text-sm font-medium tracking-wide text-accent">你好，欢迎来到</p>
 	<h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-6xl">
 		{site.name}
 	</h1>
