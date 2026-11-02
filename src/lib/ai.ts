@@ -1,3 +1,5 @@
+import config from '../content/ai.json';
+
 export interface TokensDay {
 	date: string;
 	totals: { tokens: number; cost: number; messages: number };
@@ -12,7 +14,13 @@ export interface TokensProfile {
 }
 
 export interface Ranked {
+	/** Raw id from tokens.ci (model id or client id). */
+	id: string;
 	name: string;
+	/** Key into brandIcons; unknown keys render a neutral fallback icon. */
+	icon: string;
+	/** Optional Chinese description, editable in the CMS. */
+	note: string;
 	tokens: number;
 	cost: number;
 	share: number;
@@ -34,6 +42,16 @@ export interface AiSummary {
 	heatmap: { date: string; tokens: number }[];
 }
 
+/** One CMS-editable override. `match` is a case-insensitive regex (or plain id) tested against the raw id; first hit wins. */
+export interface AiOverride {
+	match: string;
+	name?: string;
+	note?: string;
+	icon?: string;
+}
+
+export const aiConfig = config as typeof config & { models: AiOverride[]; tools: AiOverride[] };
+
 const MODEL_NAMES: [RegExp, string][] = [
 	[/^claude-fable-5-1$/, 'Claude Fable 5.1'],
 	[/^(claude-)?fable-5$/, 'Claude Fable 5'],
@@ -52,30 +70,111 @@ const MODEL_NAMES: [RegExp, string][] = [
 	[/^grok-4\.6$/, 'Grok 4.6'],
 	[/^kimi-k3$/, 'Kimi K3'],
 	[/^qwen3\.8-max$/, 'Qwen 3.8 Max'],
-	[/^dеepseek-v4-flash$/, 'DеepSeek V4 Flash'],
+	[/^deepseek-v4-flash$/, 'DeepSeek V4 Flash'],
 	[/^minimax-m2\.1$/, 'MiniMax M2.1'],
 	[/^minimax-m3$/, 'MiniMax M3'],
 	[/^mai-code-1-flash$/, 'MAI Code 1 Flash']
 ];
 
 const TOOL_NAMES: Record<string, string> = {
-	claude: 'Сlaude Code',
-	codex: 'Сodex',
-	opencode: 'ОpenCode',
+	claude: 'Claude Code',
+	codex: 'Codex',
+	opencode: 'OpenCode',
 	zcode: 'ZCode',
 	copilot: 'GitHub Copilot',
 	cursor: 'Cursor'
 };
 
+// Vendor guesses, used when the CMS has no icon for an id. Order matters: first hit wins.
+const MODEL_ICONS: [RegExp, string][] = [
+	[/claude|opus|sonnet|haiku|fable/i, 'claude'],
+	[/gpt|^o\d|codex/i, 'openai'],
+	[/gemini/i, 'gemini'],
+	[/glm/i, 'zhipu'],
+	[/grok/i, 'grok'],
+	[/kimi/i, 'kimi'],
+	[/qwen/i, 'qwen'],
+	[/deepseek/i, 'deepseek'],
+	[/minimax/i, 'minimax'],
+	[/^mai-/i, 'microsoft']
+];
+
+const TOOL_ICONS: Record<string, string> = {
+	claude: 'claudecode',
+	codex: 'codex',
+	opencode: 'opencode',
+	zcode: 'zai',
+	copilot: 'githubcopilot',
+	cursor: 'cursor'
+};
+
 const HIDDEN_MODELS = /^(auto|gpt-reserve|oswe-vscode-prime|capi-.*|agnes-.*|bailu-.*)$/;
 
+function matches(pattern: string, id: string) {
+	try {
+		return new RegExp(pattern, 'i').test(id);
+	} catch {
+		// Not a valid regex: treat it as a plain id.
+		return pattern.toLowerCase() === id.toLowerCase();
+	}
+}
+
+/** Drop a routing prefix such as `anthropic/` or `codex/`: same model, different route. */
+const normId = (id: string) => id.replace(/^.*\//, '');
+
+const findOverride = (list: AiOverride[], id: string) =>
+	list.find((o) => o.match && (matches(o.match, id) || matches(o.match, normId(id))));
+
+const BRAND_CASE: Record<string, string> = {
+	gpt: 'GPT',
+	glm: 'GLM',
+	mai: 'MAI',
+	claude: 'Claude',
+	deepseek: 'DeepSeek',
+	minimax: 'MiniMax',
+	kimi: 'Kimi',
+	qwen: 'Qwen',
+	grok: 'Grok',
+	gemini: 'Gemini'
+};
+
+/** Best-effort readable name for ids missing from MODEL_NAMES: `claude-sonnet-5-5` -> `Claude Sonnet 5.5`. */
+function autoName(id: string) {
+	const tokens: string[] = [];
+	for (const p of normId(id).split('-')) {
+		const last = tokens[tokens.length - 1];
+		if (/^\d+$/.test(p) && last && /^\d+(\.\d+)*$/.test(last)) tokens[tokens.length - 1] = `${last}.${p}`;
+		else tokens.push(p);
+	}
+	return tokens.map((t) => BRAND_CASE[t.toLowerCase()] ?? (/^[a-z]/.test(t) ? t[0].toUpperCase() + t.slice(1) : t)).join(' ');
+}
+
 export function prettyModel(id: string) {
-	for (const [re, name] of MODEL_NAMES) if (re.test(id)) return name;
-	return id;
+	const key = normId(id);
+	for (const [re, name] of MODEL_NAMES) if (re.test(key)) return name;
+	return autoName(id);
 }
 
 export function prettyTool(id: string) {
 	return TOOL_NAMES[id] ?? id;
+}
+
+export function describeModel(id: string): Pick<Ranked, 'name' | 'icon' | 'note'> {
+	const o = findOverride(aiConfig.models, id);
+	return {
+		name: o?.name || prettyModel(id),
+		icon: o?.icon || MODEL_ICONS.find(([re]) => re.test(normId(id)))?.[1] || '',
+		note: o?.note ?? ''
+	};
+}
+
+export function describeTool(id: string): Pick<Ranked, 'name' | 'icon' | 'note'> {
+	const o = findOverride(aiConfig.tools, id);
+	return {
+		name: o?.name || prettyTool(id),
+		icon: o?.icon || TOOL_ICONS[id] || '',
+		note: o?.note ?? ''
+	};
 }
 
 export async function fetchAiSummary(fetchFn: typeof fetch, user: string, days = 90): Promise<AiSummary | null> {
@@ -102,12 +201,14 @@ export async function fetchAiSummary(fetchFn: typeof fetch, user: string, days =
 		totalCost += day.totals.cost;
 		for (const c of day.clients) {
 			sessions += c.messages;
-			const tool = tools.get(c.client) ?? { name: prettyTool(c.client), tokens: 0, cost: 0, share: 0 };
-			for (const [id, m] of Object.entries(c.models)) {
+			const tool = tools.get(c.client) ?? { id: c.client, ...describeTool(c.client), tokens: 0, cost: 0, share: 0 };
+			for (const [rawId, m] of Object.entries(c.models)) {
 				tool.tokens += m.tokens;
 				tool.cost += m.cost;
+				// Merge routes to the same model (`codex/gpt-6-astra` + `gpt-6-astra`) into one row.
+				const id = normId(rawId);
 				if (HIDDEN_MODELS.test(id)) continue;
-				const model = models.get(id) ?? { name: prettyModel(id), tokens: 0, cost: 0, share: 0 };
+				const model = models.get(id) ?? { id, ...describeModel(rawId), tokens: 0, cost: 0, share: 0 };
 				model.tokens += m.tokens;
 				model.cost += m.cost;
 				models.set(id, model);

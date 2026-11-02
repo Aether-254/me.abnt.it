@@ -13,8 +13,8 @@
 		{site.name}
 	</h1>
 	<p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-		写 Minecraft mod、做 Unity 游戏、折腾 LLM 基础设施，偶尔逆向点东西。
-		这里是个人主页与博客。
+		写 Minecraft mod，做 Unity 游戏，折腾 LLM 基础设施，偶尔也逆向点东西。
+		这里是我的个人主页和博客。
 	</p>
 	<div class="mt-8 flex flex-wrap gap-3">
 		{#each links as l}
@@ -24,15 +24,15 @@
 			</a>
 		{/each}
 	</div>
-	<dl class="mt-10 flex gap-10 font-mono text-sm">
-		<div><dt class="text-muted">public repos</dt><dd class="text-2xl">{data.stats.repos}</dd></div>
-		<div><dt class="text-muted">stars</dt><dd class="text-2xl">{data.stats.stars}</dd></div>
-		<div><dt class="text-muted">based in</dt><dd class="text-2xl">{site.location.split(',')[0]}</dd></div>
+	<dl class="mt-10 flex gap-10 text-sm">
+		<div><dt class="text-muted">公开仓库</dt><dd class="font-serif text-2xl">{data.stats.repos}</dd></div>
+		<div><dt class="text-muted">获得 Star</dt><dd class="font-serif text-2xl">{data.stats.stars}</dd></div>
+		<div><dt class="text-muted">所在地</dt><dd class="font-serif text-2xl">{site.location}</dd></div>
 	</dl>
 </section>
 
 <section class="mx-auto max-w-5xl px-6 py-12">
-	<h2 class="font-mono text-sm uppercase tracking-widest text-muted">Now</h2>
+	<h2 class="eyebrow">最近在做</h2>
 	<div class="mt-6 grid gap-4 md:grid-cols-2">
 		{#each now as n}
 			<div class="rounded-xl border border-line bg-panel p-5">
@@ -45,8 +45,8 @@
 
 <section class="mx-auto max-w-5xl px-6 py-12">
 	<div class="flex items-baseline justify-between">
-		<h2 class="font-mono text-sm uppercase tracking-widest text-muted">Featured</h2>
-		<a href="/projects" class="text-sm text-accent hover:underline">全部项目</a>
+		<h2 class="eyebrow">精选项目</h2>
+		<a href="/projects" class="text-sm text-accent hover:underline">查看全部项目 →</a>
 	</div>
 	<div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 		{#each featured as f}
@@ -61,7 +61,7 @@
 
 {#if data.recent.length}
 	<section class="mx-auto max-w-5xl px-6 py-12">
-		<h2 class="font-mono text-sm uppercase tracking-widest text-muted">Recently pushed</h2>
+		<h2 class="eyebrow">最近更新</h2>
 		<div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each data.recent as repo}<RepoCard {repo} />{/each}
 		</div>
@@ -69,11 +69,11 @@
 {/if}
 
 <section class="mx-auto max-w-5xl px-6 py-12">
-	<h2 class="font-mono text-sm uppercase tracking-widest text-muted">Stack</h2>
+	<h2 class="eyebrow">技术栈</h2>
 	<div class="mt-6 grid gap-6 md:grid-cols-2">
 		{#each skills as s}
 			<div>
-				<h3 class="text-sm font-semibold text-muted">{s.group}</h3>
+				<h3 class="font-sans text-sm font-semibold text-muted">{s.group}</h3>
 				<ul class="mt-2 flex flex-wrap gap-2">
 					{#each s.items as item}
 						<li class="rounded-md border border-line px-2.5 py-1 font-mono text-xs">{item}</li>
@@ -87,8 +87,8 @@
 {#if data.posts.length}
 	<section class="mx-auto max-w-5xl px-6 py-12">
 		<div class="flex items-baseline justify-between">
-			<h2 class="font-mono text-sm uppercase tracking-widest text-muted">Writing</h2>
-			<a href="/blog" class="text-sm text-accent hover:underline">全部文章</a>
+			<h2 class="eyebrow">最新文章</h2>
+			<a href="/blog" class="text-sm text-accent hover:underline">查看全部文章 →</a>
 		</div>
 		<ul class="mt-6 divide-y divide-line">
 			{#each data.posts as p}

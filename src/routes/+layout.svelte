@@ -53,8 +53,8 @@
 	</main>
 
 	<footer class="border-t border-line/70">
-		<div class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 font-mono text-xs text-muted md:flex-row md:justify-between">
-			<span>&copy; {new Date().getFullYear()} {site.name}. Built with SvelteKit, deployed on Vercel.</span>
+		<div class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 text-xs text-muted md:flex-row md:justify-between">
+			<span>&copy; {new Date().getFullYear()} {site.name} · 基于 SvelteKit 构建，部署在 Vercel</span>
 			<span class="flex gap-4">
 				<a href={site.github} class="hover:text-accent">GitHub</a>
 				<a href={site.bilibili} class="hover:text-accent">Bilibili</a>

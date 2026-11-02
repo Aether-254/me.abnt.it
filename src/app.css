@@ -48,8 +48,8 @@ html {
 
 /* Serif headings carry the editorial feel; body stays sans. */
 h1,
-h2:not(.font-mono),
-h3:not(.font-mono) {
+h2:not(.font-mono, .font-sans, .eyebrow),
+h3:not(.font-mono, .font-sans) {
 	font-family: var(--font-serif);
 }
 
@@ -71,6 +71,42 @@ a.rounded-xl {
 	transition:
 		border-color 0.15s,
 		transform 0.15s;
+}
+
+/* Section label: small, muted, readable for CJK (no uppercase mono tracking). */
+.eyebrow {
+	font-size: 0.875rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	color: var(--color-muted);
+}
+
+/* Typography plugin colours follow the theme variables, so one class works in light and dark. */
+.prose {
+	--tw-prose-body: var(--fg);
+	--tw-prose-headings: var(--fg);
+	--tw-prose-lead: var(--muted);
+	--tw-prose-links: var(--accent);
+	--tw-prose-bold: var(--fg);
+	--tw-prose-counters: var(--muted);
+	--tw-prose-bullets: var(--muted);
+	--tw-prose-hr: var(--line);
+	--tw-prose-quotes: var(--fg);
+	--tw-prose-quote-borders: var(--line);
+	--tw-prose-captions: var(--muted);
+	--tw-prose-kbd: var(--fg);
+	--tw-prose-code: var(--fg);
+	--tw-prose-pre-code: #e6edf3;
+	--tw-prose-pre-bg: #1b1712;
+	--tw-prose-th-borders: var(--line);
+	--tw-prose-td-borders: var(--line);
+}
+
+/* Brand icons are inlined SVG using currentColor; size follows the wrapper's font-size. */
+.brand-icon svg {
+	display: block;
+	width: 1em;
+	height: 1em;
 }
 
 /* Code blocks stay dark in both schemes (shiki github-dark-default). */

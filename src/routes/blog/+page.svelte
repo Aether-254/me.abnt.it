@@ -10,11 +10,11 @@
 
 <section class="mx-auto max-w-3xl px-6 py-16">
 	<h1 class="text-3xl font-semibold tracking-tight md:text-4xl">博客</h1>
-	<p class="mt-3 text-muted">Minecraft mod 开发、Unity、LLM、逆向，以及不知道该放哪的东西。</p>
+	<p class="mt-3 text-muted">Minecraft mod、Unity、LLM、逆向，以及一些不知道该归到哪儿的东西。</p>
 
 	{#if data.tags.length}
 		<ul class="mt-6 flex flex-wrap gap-2">
-			<li><a href="/blog" class="rounded-full border px-3 py-0.5 font-mono text-xs {tag ? 'border-line text-muted' : 'border-accent text-accent'}">all</a></li>
+			<li><a href="/blog" class="rounded-full border px-3 py-0.5 font-mono text-xs {tag ? 'border-line text-muted' : 'border-accent text-accent'}">全部</a></li>
 			{#each data.tags as t}
 				<li><a href="/blog?tag={t}" class="rounded-full border px-3 py-0.5 font-mono text-xs {tag === t ? 'border-accent text-accent' : 'border-line text-muted hover:border-accent'}">#{t}</a></li>
 			{/each}
@@ -31,7 +31,7 @@
 				</a>
 			</li>
 		{:else}
-			<li class="py-6 text-muted">还没有文章。</li>
+			<li class="py-6 text-muted">暂时还没有文章。</li>
 		{/each}
 	</ul>
 </section>

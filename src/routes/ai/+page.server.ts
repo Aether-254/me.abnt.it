@@ -8,5 +8,5 @@ export const config = { isr: { expiration: 3600 } };
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const ai = await fetchAiSummary(fetch, site.handle).catch(() => null);
-	return { title: 'AI', description: '过去 90 天我怎么用 AI：模型、工具、token 与花费。', ai };
+	return { title: 'AI', description: '过去 90 天，我是怎么用 AI 的：模型、工具、token 与花费。', ai };
 };

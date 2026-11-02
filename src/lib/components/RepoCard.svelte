@@ -9,20 +9,20 @@
 	};
 	const rel = (iso: string) => {
 		const d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
-		return d < 1 ? 'today' : d < 30 ? `${d}d ago` : d < 365 ? `${Math.floor(d / 30)}mo ago` : `${Math.floor(d / 365)}y ago`;
+		return d < 1 ? '今天' : d < 30 ? `${d} 天前` : d < 365 ? `${Math.floor(d / 30)} 个月前` : `${Math.floor(d / 365)} 年前`;
 	};
 </script>
 
 <a href={repo.html_url} target="_blank" rel="noopener" class="flex flex-col rounded-xl border border-line bg-panel p-5 transition-colors hover:border-accent">
 	<h3 class="font-mono text-sm font-semibold break-all">{repo.name}</h3>
-	<p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{repo.description ?? '—'}</p>
+	<p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{repo.description ?? '暂无描述'}</p>
 	<div class="mt-4 flex items-center gap-4 font-mono text-xs text-muted">
 		{#if repo.language}
 			<span class="flex items-center gap-1.5">
 				<span class="inline-block size-2.5 rounded-full" style="background:{colors[repo.language] ?? '#8b93a1'}"></span>{repo.language}
 			</span>
 		{/if}
-		{#if repo.stargazers_count}<span>star {repo.stargazers_count}</span>{/if}
+		{#if repo.stargazers_count}<span>★ {repo.stargazers_count}</span>{/if}
 		<span class="ml-auto">{rel(repo.pushed_at)}</span>
 	</div>
 </a>

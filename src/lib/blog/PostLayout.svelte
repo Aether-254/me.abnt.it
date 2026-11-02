@@ -24,7 +24,7 @@
 			</ul>
 		{/if}
 	</header>
-	<div class="prose prose-invert prose-lg max-w-none prose-a:text-accent prose-code:before:content-none prose-code:after:content-none">
+	<div class="prose prose-lg max-w-none prose-code:before:content-none prose-code:after:content-none">
 		{@render children()}
 	</div>
 </article>

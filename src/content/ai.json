@@ -1,0 +1,20 @@
+{
+	"intro": "过去 {days} 天，我是怎么用 AI 的。",
+	"empty": "暂时没能从 tokens.ci 获取数据，请稍后再来看看。",
+	"footnote": "数据来自 tokens.ci，由各个编码工具的本地用量日志汇总上传，只包含 token 数、模型名和时间戳。费用是按各家公开 API 定价折算的等价值，并非实际支出。页面最多缓存一小时，数据最后更新于 {updated}。",
+	"sourceLink": "在 tokens.ci 查看完整数据 →",
+	"labels": {
+		"favoriteModel": "最常用模型",
+		"favoriteTool": "最常用工具",
+		"totalTokens": "Token 总量",
+		"totalCost": "折合花费",
+		"costNote": "按公开定价折算",
+		"messages": "消息数",
+		"activeDays": "活跃天数",
+		"byModel": "按模型",
+		"byTool": "按工具",
+		"share": "占比"
+	},
+	"models": [],
+	"tools": []
+}

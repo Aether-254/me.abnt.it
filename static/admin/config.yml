@@ -35,6 +35,52 @@ collections:
   - name: site
     label: 站点配置
     files:
+      - name: ai
+        label: AI 页文案与模型说明
+        file: src/content/ai.json
+        fields:
+          - { name: intro, label: 页面简介, widget: string, hint: "可用 {days} 代表统计天数" }
+          - { name: empty, label: 无数据时的提示, widget: text }
+          - { name: footnote, label: 页脚说明, widget: text, hint: "可用 {updated} 代表数据更新时间，{days} 代表统计天数" }
+          - { name: sourceLink, label: 数据来源链接文字, widget: string }
+          - name: labels
+            label: 各项标签
+            widget: object
+            fields:
+              - { name: favoriteModel, label: 最常用模型, widget: string }
+              - { name: favoriteTool, label: 最常用工具, widget: string }
+              - { name: totalTokens, label: Token 总量, widget: string }
+              - { name: totalCost, label: 折合花费, widget: string }
+              - { name: costNote, label: 花费补充说明, widget: string }
+              - { name: messages, label: 消息数, widget: string }
+              - { name: activeDays, label: 活跃天数, widget: string }
+              - { name: byModel, label: 按模型（小标题）, widget: string }
+              - { name: byTool, label: 按工具（小标题）, widget: string }
+              - { name: share, label: 占比, widget: string }
+          - name: models
+            label: 模型显示覆盖
+            label_singular: 模型
+            widget: list
+            required: false
+            summary: "{{fields.match}} → {{fields.name}}"
+            hint: "按顺序匹配，第一条命中的生效。没有写在这里的模型会使用内置名称和按厂商推断的图标。"
+            fields:
+              - { name: match, label: 匹配（模型 ID，支持正则，不区分大小写）, widget: string, hint: "例如 claude-opus-5 或 ^gpt-5" }
+              - { name: name, label: 显示名称, widget: string, required: false }
+              - { name: note, label: 中文说明, widget: string, required: false }
+              - { name: icon, label: 图标, widget: select, required: false, options: [claude, claudecode, openai, codex, gemini, zhipu, zai, grok, kimi, qwen, deepseek, minimax, microsoft, githubcopilot, cursor, opencode] }
+          - name: tools
+            label: 工具显示覆盖
+            label_singular: 工具
+            widget: list
+            required: false
+            summary: "{{fields.match}} → {{fields.name}}"
+            hint: "匹配的是 tokens.ci 里的工具 ID，例如 claude、codex、cursor。"
+            fields:
+              - { name: match, label: 匹配（工具 ID，支持正则，不区分大小写）, widget: string }
+              - { name: name, label: 显示名称, widget: string, required: false }
+              - { name: note, label: 中文说明, widget: string, required: false }
+              - { name: icon, label: 图标, widget: select, required: false, options: [claude, claudecode, openai, codex, gemini, zhipu, zai, grok, kimi, qwen, deepseek, minimax, microsoft, githubcopilot, cursor, opencode] }
       - name: config
         label: site.ts
         file: src/lib/site.ts
