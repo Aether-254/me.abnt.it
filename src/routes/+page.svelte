@@ -2,6 +2,10 @@
 	import { site, links, skills, now, featured } from '$lib/site';
 	import { formatDate } from '$lib/blog';
 	import RepoCard from '$lib/components/RepoCard.svelte';
+	import sparkleRaw from '$lib/assets/sparkle.svg?raw';
+
+	// Inline so the icon inherits currentColor from the button; decorative, so hidden from screen readers.
+	const sparkle = sparkleRaw.replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
 
 	let { data } = $props();
 </script>
@@ -18,10 +22,19 @@
 	</p>
 	<div class="mt-8 flex flex-wrap gap-3">
 		{#each links as l}
-			<a href={l.href} target="_blank" rel="noopener" class="group rounded-lg border border-line bg-panel px-4 py-2 text-sm transition-colors hover:border-accent">
-				<span class="text-fg">{l.label}</span>
-				<span class="ml-2 font-mono text-xs text-muted group-hover:text-accent">{l.note}</span>
-			</a>
+			{#if l.featured}
+				<a href={l.href} target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-lg border border-accent/60 bg-accent/10 px-4 py-2 text-sm transition-colors hover:border-accent hover:bg-accent/15">
+					<span class="brand-icon text-base text-accent">{@html sparkle}</span>
+					<span class="font-medium text-fg">{l.label}</span>
+					<span class="rounded-full bg-accent px-2 py-0.5 text-[11px] font-semibold leading-none text-bg">Featured</span>
+					<span class="font-mono text-xs text-muted group-hover:text-accent">{l.note}</span>
+				</a>
+			{:else}
+				<a href={l.href} target="_blank" rel="noopener" class="group rounded-lg border border-line bg-panel px-4 py-2 text-sm transition-colors hover:border-accent">
+					<span class="text-fg">{l.label}</span>
+					<span class="ml-2 font-mono text-xs text-muted group-hover:text-accent">{l.note}</span>
+				</a>
+			{/if}
 		{/each}
 	</div>
 	<dl class="mt-10 flex gap-10 text-sm">

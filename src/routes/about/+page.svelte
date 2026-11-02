@@ -17,7 +17,7 @@
 
 		<h2>联系方式</h2>
 		<ul>
-			{#each links.slice(0, 3) as l}<li>{l.label}：<a href={l.href}>{l.note}</a></li>{/each}
+			{#each links.filter((l) => !l.featured).slice(0, 3) as l}<li>{l.label}：<a href={l.href}>{l.note}</a></li>{/each}
 		</ul>
 
 		<h2>关于本站</h2>
