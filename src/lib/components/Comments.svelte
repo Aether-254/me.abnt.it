@@ -16,7 +16,11 @@
 			const message = event.data?.giscus;
 			if (!message || typeof message !== 'object') return;
 			if ('error' in message) {
-				status = 'error';
+				// A new article has no discussion until its first comment or reaction.
+				const recoverable = typeof message.error === 'string' &&
+					['Discussion not found', 'Bad credentials', 'Invalid state value', 'State has expired']
+						.some((hint) => message.error.includes(hint));
+				status = recoverable ? 'ready' : 'error';
 				clearTimeout(timer);
 			} else if ('resizeHeight' in message || 'discussion' in message) {
 				status = 'ready';
