@@ -41,7 +41,15 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') || filename.endsWith('.md') ? undefined : true
 			},
 			adapter: adapter({ runtime: 'nodejs22.x' }),
-			prerender: { entries: ['*'], handleHttpError: 'warn' }
+			prerender: {
+				entries: ['*'],
+				handleHttpError: 'warn',
+				handleUnseenRoutes: ({ routes }) => {
+					// An empty blog is valid after deleting or drafting all articles in the CMS.
+					const unexpected = routes.filter((route) => route !== '/blog/[slug]');
+					if (unexpected.length) throw new Error(`Unseen prerender routes: ${unexpected.join(', ')}`);
+				}
+			}
 		})
 	]
 });
