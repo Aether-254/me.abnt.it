@@ -1,0 +1,130 @@
+media:
+  input: static/uploads
+  output: /uploads
+  categories: [image]
+  rename: safe
+
+content:
+  - name: posts
+    label: 文章
+    type: collection
+    path: src/content/posts
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, date, draft, tags]
+      sort: [date, title]
+      search: [title, summary, tags]
+      default:
+        sort: date
+        order: desc
+    operations:
+      rename: false
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: date
+        label: 发布日期
+        type: date
+        required: true
+        options:
+          time: false
+          format: yyyy-MM-dd
+      - name: summary
+        label: 摘要
+        type: text
+        required: true
+      - name: tags
+        label: 标签
+        type: string
+        list: true
+        default: []
+      - name: draft
+        label: 草稿（不在网站公开展示）
+        type: boolean
+        default: false
+      - name: body
+        label: 正文
+        type: rich-text
+        options:
+          format: markdown
+          switcher: true
+
+  - name: ai
+    label: AI 页文案与模型说明
+    type: file
+    path: src/content/ai.json
+    format: json
+    fields:
+      - name: intro
+        label: 页面简介
+        description: 可用 {days} 代表统计天数
+        type: string
+      - name: empty
+        label: 无数据时的提示
+        type: text
+      - name: footnote
+        label: 页脚说明
+        description: 可用 {updated} 代表数据更新时间，{days} 代表统计天数
+        type: text
+      - name: sourceLink
+        label: 数据来源链接文字
+        type: string
+      - name: labels
+        label: 页面各项标签
+        type: object
+        fields:
+          - { name: favoriteModel, label: 最常用模型, type: string }
+          - { name: favoriteTool, label: 最常用工具, type: string }
+          - { name: totalTokens, label: Token 总量, type: string }
+          - { name: totalCost, label: 折合花费, type: string }
+          - { name: costNote, label: 花费补充说明, type: string }
+          - { name: messages, label: 消息数, type: string }
+          - { name: activeDays, label: 活跃天数, type: string }
+          - { name: byModel, label: 按模型（小标题）, type: string }
+          - { name: byTool, label: 按工具（小标题）, type: string }
+          - { name: share, label: 占比, type: string }
+      - name: models
+        label: 模型显示覆盖
+        description: 按顺序匹配，第一条命中的生效；支持正则，不区分大小写
+        component: displayOverride
+      - name: tools
+        label: 工具显示覆盖
+        description: 匹配 tokens.ci 的工具 ID，例如 claude、codex、cursor
+        component: displayOverride
+
+  - name: site
+    label: 站点资料（TypeScript）
+    type: file
+    path: src/lib/site.ts
+    format: code
+
+components:
+  displayOverride:
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: "{fields.match}"
+    fields:
+      - name: match
+        label: 模型或工具 ID（支持正则）
+        type: string
+        required: true
+      - name: name
+        label: 显示名称
+        type: string
+      - name: note
+        label: 中文说明
+        type: string
+      - name: icon
+        label: 图标
+        type: select
+        options:
+          values: [claude, claudecode, openai, codex, gemini, zhipu, zai, grok, kimi, qwen, deepseek, minimax, microsoft, githubcopilot, cursor, opencode]

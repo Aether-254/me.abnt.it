@@ -1,0 +1,63 @@
+@import url('https://giscus.app/themes/preferred_color_scheme.css');
+
+main {
+	--color-fg-default: #1f1b16;
+	--color-fg-muted: #6f6558;
+	--color-fg-subtle: #6f6558;
+	--color-canvas-default: #faf7f2;
+	--color-canvas-overlay: #fffdf9;
+	--color-canvas-inset: #fffdf9;
+	--color-canvas-subtle: #f2ede5;
+	--color-border-default: #e6ddcf;
+	--color-border-muted: #e6ddcf;
+	--color-accent-fg: #c2410c;
+	--color-accent-emphasis: #c2410c;
+	--color-accent-muted: #c2410c66;
+	--color-accent-subtle: #c2410c12;
+	--color-btn-text: #1f1b16;
+	--color-btn-bg: #fffdf9;
+	--color-btn-border: #e6ddcf;
+	--color-btn-hover-bg: #f2ede5;
+	--color-btn-hover-border: #6f6558;
+	--color-btn-primary-text: #ffffff;
+	--color-btn-primary-bg: #c2410c;
+	--color-btn-primary-border: #c2410c;
+	--color-btn-primary-hover-bg: #9a3412;
+	--color-btn-primary-hover-border: #9a3412;
+	--color-btn-primary-disabled-text: #ffffff;
+	--color-btn-primary-disabled-bg: #c2410c80;
+	--color-btn-primary-disabled-border: #c2410c00;
+	font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+	main {
+		--color-fg-default: #f1eadf;
+		--color-fg-muted: #a29788;
+		--color-fg-subtle: #a29788;
+		--color-canvas-default: #15110d;
+		--color-canvas-overlay: #1d1812;
+		--color-canvas-inset: #1d1812;
+		--color-canvas-subtle: #241e17;
+		--color-border-default: #342c22;
+		--color-border-muted: #342c22;
+		--color-accent-fg: #fb923c;
+		--color-accent-emphasis: #fb923c;
+		--color-accent-muted: #fb923c66;
+		--color-accent-subtle: #fb923c12;
+		--color-btn-text: #f1eadf;
+		--color-btn-bg: #1d1812;
+		--color-btn-border: #342c22;
+		--color-btn-hover-bg: #241e17;
+		--color-btn-hover-border: #a29788;
+		--color-btn-primary-text: #15110d;
+		--color-btn-primary-bg: #fb923c;
+		--color-btn-primary-border: #fb923c;
+		--color-btn-primary-hover-bg: #fdba74;
+		--color-btn-primary-hover-border: #fdba74;
+		--color-btn-primary-disabled-text: #15110d;
+		--color-btn-primary-disabled-bg: #fb923c80;
+	}
+}
+
+.gsc-comment-box, .gsc-comment { border-radius: 0.75rem; }

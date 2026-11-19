@@ -5,6 +5,13 @@
 	"buildCommand": "pnpm build",
 	"headers": [
 		{
+			"source": "/giscus/theme.css",
+			"headers": [
+				{ "key": "Access-Control-Allow-Origin", "value": "*" },
+				{ "key": "Cache-Control", "value": "public, max-age=3600" }
+			]
+		},
+		{
 			"source": "/(.*)",
 			"headers": [
 				{ "key": "X-Content-Type-Options", "value": "nosniff" },
