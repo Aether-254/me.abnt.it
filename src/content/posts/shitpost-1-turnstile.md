@@ -8,4 +8,10 @@ Turnstile是Cloudflare开发的验证码系统，被用于无数网站的表单�
 
 哦对了，600010。
 
-TBC
+本文介绍 Turnstile 的 iFrame（这听起来像是一个苹果产品！）、JS、自定义 VM 是如何工作的，并告诉你为什么伪造 hostname 会使你变成滚木。
+
+谁能想最初的问题是 能否把服务方页面上的人机验证搬到独立 localhost 完成。
+
+
+
+&nbsp;
