@@ -4,7 +4,7 @@ date: 2026-11-27
 summary: 由于本文包含大量对启动器的评价，可能引起部分粉丝不适，请谨慎阅读。
 draft: false
 ---
-> 本文章已发布到 [me.abnt.it/blog/pichailangqidongqishequbanweishenmeshiyituoshi](http://me.abnt.it) 并以 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) 授权。
+> 本文章已发布到 [me.abnt.it](http://me.abnt.it/blog/pichailangqidongqishequbanweishenmeshiyituoshi) 并以 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) 授权。
 
 很显然我不知道是哪个受到[生成式预训练转换器](https://chatgpt.com/)感召的赛博法务部编写了这个社区版，还是它的维护者为了证明自己和原版[劈柴狼](https://github.com/Meloong-Git/PCL)存在某种生殖隔离，总之在打开这个东西的 1 [普朗克时间](https://zh.wikipedia.org/zh-hans/%E6%99%AE%E6%9C%97%E5%85%8B%E6%99%82%E9%96%93)内，笔者就已经明白了什么叫代码在裸奔。
 
@@ -74,8 +74,6 @@ draft: false
 3. 八章加附录：从一排到八外加附录，连“适用范围与定义”都单开第一章。
 4. 当场打脸：方针里写得义正辞严，强调 AI 不能代替贡献者完成必要的理解、审查和验证工作；结果贡献者列表里出现了 Copilot 和 claude，甚至 Issues 里面一大堆 `[AI Review]` 。
   ![image.png](/uploads/image-30.png)
-
-  
 
 ### 结语
 
