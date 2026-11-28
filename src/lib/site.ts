@@ -11,13 +11,9 @@ export const site = {
 };
 
 export const links: { label: string; href: string; note: string; featured?: boolean }[] = [
-	{ label: 'Aether Pro', href: 'https://pro.abnt.it', note: '商业中转站 · pro.abnt.it', featured: true },
 	{ label: 'GitHub', href: site.github, note: '@Aether-254' },
 	{ label: 'Bilibili', href: site.bilibili, note: 'Aether_255' },
 	{ label: '邮箱', href: `mailto:${site.email}`, note: site.email },
-	{ label: 'abnt.it', href: 'https://abnt.it', note: 'Minecraft 无规则服务器' },
-	{ label: 'AetherAC', href: 'https://aetherac.abnt.it', note: '反作弊项目' },
-	{ label: 'api.abnt.it', href: 'https://api.abnt.it', note: 'LLM 公益 API 站' }
 ];
 
 export const skills: { group: string; items: string[] }[] = [
